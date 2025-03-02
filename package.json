@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
-    "deploy": "gh-pages -d docs/.vuepress/dist"
+    "deploy": "npm run build && gh-pages -d docs/.vuepress/dist",
+    "cname": "echo your-custom-domain.com > docs/.vuepress/dist/CNAME"
   },
   "keywords": [
     "电子书",
