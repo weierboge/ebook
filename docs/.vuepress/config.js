@@ -1,7 +1,7 @@
 module.exports = {
   title: '韦二伯格的电子书',
   description: '开源电子书模板',
-  base: '/仓库名/', // 请替换为您实际的GitHub仓库名称
+  base: '/ebook/', // 请替换为您实际的GitHub仓库名称
   head: [
     ['link', { rel: 'icon', href: '/logo.png' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
@@ -14,7 +14,7 @@ module.exports = {
       { text: '首页', link: '/' },
       { text: '指南', link: '/guide/' },
       { text: '第一章', link: '/chapter1/' },
-      { text: 'GitHub', link: 'https://github.com/username/weierboge-ebook' }
+      { text: 'GitHub', link: 'https://github.com/weierboge/ebook.gitk' }
     ],
     sidebar: {
       '/guide/': [
