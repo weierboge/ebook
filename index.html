@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开源电子书</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Docsify -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+    <!-- 响应式设计支持 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/buble.css" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/dark.css" media="(prefers-color-scheme: dark)">
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        window.$docsify = {
+            name: '开源电子书',
+            repo: 'weierboge/ebook',
+            loadSidebar: true,
+            subMaxLevel: 3,
+            auto2top: true,
+            search: {
+                maxAge: 86400000,
+                paths: 'auto',
+                placeholder: '搜索',
+                noData: '没有找到结果',
+                depth: 6
+            },
+            pagination: {
+                previousText: '上一章',
+                nextText: '下一章',
+            },
+            copyCode: {
+                buttonText: '复制',
+                errorText: '错误',
+                successText: '已复制'
+            },
+            plugins: [
+                function(hook) {
+                    var footer = [
+                        '<hr/>',
+                        '<footer>',
+                        '<span>Powered by <a href="https://github.com/weierboge/ebook">开源电子书</a> &copy; 2024</span>',
+                        '</footer>'
+                    ].join('');
+
+                    hook.afterEach(function(html) {
+                        return html + footer;
+                    });
+                }
+            ]
+        }
+    </script>
+    <!-- Docsify v4 -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+    <!-- 搜索插件 -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+    <!-- 代码复制 -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+    <!-- 分页导航 -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+    <!-- 图片缩放 -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+</body>
+</html>

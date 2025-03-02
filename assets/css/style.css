@@ -1,0 +1,230 @@
+/* 全局样式 */
+:root {
+  --theme-color: #42b983;
+  --text-color-base: #2c3e50;
+  --text-color-secondary: #476582;
+  --border-color: #eaecef;
+  --code-bg-color: #f8f8f8;
+  --heading-color: #2c3e50;
+}
+
+/* 深色模式变量 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --theme-color: #42b983;
+    --text-color-base: #c8c8c8;
+    --text-color-secondary: #9eb3c0;
+    --border-color: #3e3e3e;
+    --code-bg-color: #2e2e2e;
+    --heading-color: #ddd;
+  }
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-color-base);
+}
+
+/* 侧边栏样式优化 */
+.sidebar {
+  padding: 1rem;
+  border-right: 1px solid var(--border-color);
+}
+
+.sidebar ul li {
+  margin: 0.25rem 0;
+}
+
+.sidebar ul li a {
+  color: var(--text-color-base);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.sidebar ul li a:hover {
+  color: var(--theme-color);
+}
+
+.sidebar ul li.active > a {
+  color: var(--theme-color);
+  font-weight: 600;
+}
+
+/* 内容区域样式 */
+.content {
+  padding: 2rem 3rem;
+}
+
+/* 标题样式 */
+.markdown-section h1,
+.markdown-section h2,
+.markdown-section h3,
+.markdown-section h4,
+.markdown-section h5,
+.markdown-section h6 {
+  color: var(--heading-color);
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-section h1 {
+  font-size: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.markdown-section h2 {
+  font-size: 1.65rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.3rem;
+}
+
+/* 链接样式 */
+.markdown-section a {
+  color: var(--theme-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.markdown-section a:hover {
+  text-decoration: underline;
+}
+
+/* 代码块样式 */
+.markdown-section pre,
+.markdown-section code {
+  background-color: var(--code-bg-color);
+  border-radius: 3px;
+}
+
+.markdown-section pre {
+  padding: 1rem;
+  overflow: auto;
+  line-height: 1.45;
+  border: 1px solid var(--border-color);
+}
+
+.markdown-section code {
+  padding: 0.2rem 0.4rem;
+  font-size: 0.85rem;
+}
+
+/* 表格样式 */
+.markdown-section table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  display: table;
+}
+
+.markdown-section table thead tr {
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.markdown-section table tr {
+  border-top: 1px solid var(--border-color);
+}
+
+.markdown-section table tr:nth-child(2n) {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.markdown-section table th,
+.markdown-section table td {
+  border: 1px solid var(--border-color);
+  padding: 0.6rem 1rem;
+  text-align: left;
+}
+
+/* 引用块样式 */
+.markdown-section blockquote {
+  border-left: 4px solid var(--theme-color);
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  color: var(--text-color-secondary);
+  background-color: rgba(66, 185, 131, 0.05);
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  .content {
+    padding: 1rem 1.5rem;
+  }
+  
+  .sidebar {
+    width: 16rem;
+    transform: translateX(-16rem);
+  }
+  
+  body.close .sidebar {
+    transform: translateX(0);
+  }
+  
+  .markdown-section h1 {
+    font-size: 1.8rem;
+  }
+  
+  .markdown-section h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* 页脚样式 */
+footer {
+  margin-top: 2rem;
+  text-align: center;
+  color: var(--text-color-secondary);
+  font-size: 0.85rem;
+}
+
+/* 搜索框样式优化 */
+.search {
+  margin-bottom: 1.5rem;
+}
+
+.search input {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: transparent;
+  color: var(--text-color-base);
+}
+
+/* 分页导航样式 */
+.pagination-item {
+  margin-top: 2rem;
+}
+
+.pagination-item a {
+  color: var(--theme-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.pagination-item a:hover {
+  text-decoration: underline;
+}
+
+/* 代码复制按钮样式 */
+.docsify-copy-code-button {
+  background-color: var(--theme-color) !important;
+  border-radius: 3px !important;
+  font-size: 0.75rem !important;
+  padding: 0.4rem 0.8rem !important;
+}
+
+/* 图片缩放效果 */
+.markdown-section img {
+  max-width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.medium-zoom-image--opened {
+  z-index: 100;
+}
