@@ -1,98 +1,58 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>开源电子书</title>
-    
-    <!-- 本地样式 -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    
-    <!-- Docsify v4 核心样式 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-    
-    <!-- 响应式主题支持 -->
-    <link rel="stylesheet" 
-          href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/buble.css" 
-          media="(prefers-color-scheme: light)">
-    <link rel="stylesheet" 
-          href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/dark.css" 
-          media="(prefers-color-scheme: dark)">
+  <meta charset="UTF-8">
+  <title>电子书</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- GitBook 风格主题 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify/themes/darkbook.css">
+  <!-- 自定义标题加粗和配色 -->
+  <style>
+    /* 加粗标题 */
+    .app-name-link {
+      font-weight: 900 !important;  /* 加粗到最大 */
+      font-size: 1.5rem;            /* 增大字体 */
+      color: #2c3e50 !important;    /* GitBook 类似深蓝色 */
+    }
+    /* 顶部导航栏配色 */
+    nav.app-nav {
+      background: #f8f9fa;          /* 浅灰色背景 */
+      box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    }
+    /* 侧边栏仿 GitBook 样式 */
+    .sidebar {
+      background: #f8f9fa !important;
+      border-right: 1px solid #eaecef;
+    }
+    .sidebar ul li a {
+      color: #2c3e50 !important;    /* 深蓝色文字 */
+    }
+    .sidebar ul li a:hover {
+      color: #42b983 !important;    /* 悬停绿色 */
+    }
+  </style>
 </head>
 <body>
-    <div id="app"></div>
-
-    <!-- Docsify v4 核心库 -->
-    <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
-
-    <!-- 官方插件（必须匹配v4版本） -->
-    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
-
-    <!-- 第三方插件 -->
-    <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/docsify-pagination@2"></script>
-
-    <script>
-        window.$docsify = {
-            // 基础配置
-            name: '开源电子书',
-            repo: 'https://github.com/weierboge/ebook',
-            
-            // 侧边栏配置
-            loadSidebar: true,
-            alias: {
-                '/.*/_sidebar.md': '/_sidebar.md' // 强制所有路径使用根目录侧边栏
-            },
-            subMaxLevel: 3, // 支持三级嵌套目录
-            
-            // 路径配置（关键修改）
-            basePath: '/ebook/docs', // GitHub Pages部署路径
-            
-            // 行为配置
-            auto2top: true,
-            
-            // 搜索插件配置
-            search: {
-                maxAge: 86400000,
-                paths: 'auto',
-                placeholder: '搜索',
-                noData: '没有找到结果',
-                depth: 6
-            },
-            
-            // 分页配置
-            pagination: {
-                previousText: '上一章',
-                nextText: '下一章',
-                crossChapter: true // 允许跨章节导航
-            },
-            
-            // 复制代码插件配置
-            copyCode: {
-                buttonText: '复制',
-                errorText: '错误',
-                successText: '已复制',
-                timeout: 2000
-            },
-            
-            // 自定义插件
-            plugins: [
-                function(hook) {
-                    // 页脚注入
-                    var footer = [
-                        '<hr style="margin: 2em 0;"/>',
-                        '<footer style="text-align: center; opacity: 0.6;">',
-                        '<p>Powered by <a href="https://github.com/weierboge" target="_blank">韦二伯格</a> &copy; 2025</p>',
-                        '</footer>'
-                    ].join('');
-                    
-                    hook.afterEach(function(html) {
-                        return html + footer;
-                    });
-                }
-            ]
-        }
-    </script>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      name: '<span style="font-weight:900">我的电子书</span>',  // 双重加粗保险
+      repo: 'weierboge/ebook',
+      themeColor: '#42b983',        // GitBook 标志性绿色
+      auto2top: true,
+      loadSidebar: true,
+      subMaxLevel: 3,
+      search: 'auto',               // 启用搜索（GitBook 功能）
+      alias: {                      // 可选：自定义侧边栏路径
+        '/.*/_sidebar.md': '/_sidebar.md'
+      }
+    }
+  </script>
+  <!-- 核心依赖 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  <!-- 自动侧边栏插件 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-auto-sidebar@latest/dist/docsify-auto-sidebar.min.js"></script>
+  <!-- 搜索插件（仿 GitBook 功能） -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
 </body>
 </html>
