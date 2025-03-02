@@ -1,4 +1,4 @@
-* [首页](docs/README.md)
+* [首页](README.md)
 * [开始使用](docs/getting-started.md)
 * [编写内容](docs/writing.md)
 * [自定义样式](docs/customization.md)
