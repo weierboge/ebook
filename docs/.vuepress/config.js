@@ -1,6 +1,7 @@
 module.exports = {
-  title: '韦二伯格的开源电子书模板',
-  description: '一个基于VuePress的开源电子书模板，简洁、优美、功能强大',
+  title: '韦二伯格的电子书',
+  description: '开源电子书模板',
+  base: '/仓库名/', // 请替换为您实际的GitHub仓库名称
   head: [
     ['link', { rel: 'icon', href: '/logo.png' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
