@@ -1,6 +1,0 @@
-* [首页](/)
-* [开始使用](getting-started.md)
-* [编写内容](writing.md)
-* [自定义样式](customization.md)
-* [部署指南](deployment.md)
-* [常见问题](faq.md)
