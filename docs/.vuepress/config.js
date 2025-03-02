@@ -12,6 +12,7 @@ module.exports = {
     nav: [
       { text: '首页', link: '/' },
       { text: '指南', link: '/guide/' },
+      { text: '第一章', link: '/chapter1/' },
       { text: 'GitHub', link: 'https://github.com/username/weierboge-ebook' }
     ],
     sidebar: {
@@ -23,6 +24,15 @@ module.exports = {
             '',
             'getting-started',
             'structure'
+          ]
+        }
+      ],
+      '/chapter1/': [
+        {
+          title: '第一章：入门基础',
+          collapsable: false,
+          children: [
+            ''
           ]
         }
       ]
