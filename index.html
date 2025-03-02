@@ -4,36 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>开源电子书</title>
+    
+    <!-- 本地样式 -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- Docsify -->
+    
+    <!-- Docsify v4 核心样式 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-    <!-- 响应式设计支持 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/buble.css" media="(prefers-color-scheme: light)">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/dark.css" media="(prefers-color-scheme: dark)">
+    
+    <!-- 响应式主题支持 -->
+    <link rel="stylesheet" 
+          href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/buble.css" 
+          media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" 
+          href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/dark.css" 
+          media="(prefers-color-scheme: dark)">
 </head>
 <body>
     <div id="app"></div>
-    <!-- Docsify v4 -->
+
+    <!-- Docsify v4 核心库 -->
     <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
-    <!-- 搜索插件 -->
-    <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-    <!-- 复制代码插件 -->
-    <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
-    <!-- 图片缩放插件 -->
-    <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-    <!-- 分页导航插件 -->
-    <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+
+    <!-- 官方插件（必须匹配v4版本） -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
+
+    <!-- 第三方插件 -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-pagination@2"></script>
+
     <script>
         window.$docsify = {
+            // 基础配置
             name: '开源电子书',
             repo: 'https://github.com/weierboge/ebook',
+            
+            // 侧边栏配置
             loadSidebar: true,
             alias: {
-                '/.*/_sidebar.md': '/_sidebar.md'
+                '/.*/_sidebar.md': '/_sidebar.md' // 强制所有路径使用根目录侧边栏
             },
-            subMaxLevel: 3,
+            subMaxLevel: 3, // 支持三级嵌套目录
+            
+            // 路径配置（关键修改）
+            basePath: '/ebook/docs/', // GitHub Pages部署路径
+            
+            // 行为配置
             auto2top: true,
-            basePath: '/ebook/',
+            
+            // 搜索插件配置
             search: {
                 maxAge: 86400000,
                 paths: 'auto',
@@ -41,24 +60,33 @@
                 noData: '没有找到结果',
                 depth: 6
             },
+            
+            // 分页配置
             pagination: {
                 previousText: '上一章',
                 nextText: '下一章',
+                crossChapter: true // 允许跨章节导航
             },
+            
+            // 复制代码插件配置
             copyCode: {
                 buttonText: '复制',
                 errorText: '错误',
-                successText: '已复制'
+                successText: '已复制',
+                timeout: 2000
             },
+            
+            // 自定义插件
             plugins: [
                 function(hook) {
+                    // 页脚注入
                     var footer = [
-                        '<hr/>',
-                        '<footer>',
-                        '<span>Powered by <a href="https://github.com/weierboge">韦二伯格</a> &copy; 2025</span>',
+                        '<hr style="margin: 2em 0;"/>',
+                        '<footer style="text-align: center; opacity: 0.6;">',
+                        '<p>Powered by <a href="https://github.com/weierboge" target="_blank">韦二伯格</a> &copy; 2025</p>',
                         '</footer>'
                     ].join('');
-
+                    
                     hook.afterEach(function(html) {
                         return html + footer;
                     });
