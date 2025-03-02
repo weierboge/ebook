@@ -29,6 +29,8 @@ body {
 
 /* 侧边栏样式优化 */
 .sidebar {
+    padding-left: 1rem;
+}
   padding: 1rem;
   border-right: 1px solid var(--border-color);
 }
