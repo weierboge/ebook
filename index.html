@@ -16,11 +16,16 @@
       repo: 'https://github.com/weierboge/ebook',
       basePath: 'docs/',
       loadSidebar: true,
-      subMaxLevel: 3,
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md'
+      },
+      subMaxLevel: 4,
+      sidebarDisplayLevel: 1,
       auto2top: true,
+      maxLevel: 4,
       search: {
         maxAge: 86400000,
-        paths: 'docs/',
+        paths: 'auto',
         placeholder: '搜索',
         noData: '找不到结果',
         depth: 6,
