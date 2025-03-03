@@ -1,43 +1,38 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Build and deploy to production.
+
+env:
+  OSS_ENDPOINT: oss-cn-beijing.aliyuncs.com
+  APP_ENV: prod
 
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+    branches:
+      - master
 
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build-deploy:
     runs-on: ubuntu-latest
+    if: github.repository_owner == 'xiaolai'
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/checkout@master
+
+      - uses: actions/cache@v2
         with:
-          # Upload entire repository
-          path: '.'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          path: |
+            node_modules
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
+
+      - name: Setup node env
+        uses: actions/setup-node@master
+        with:
+          node-version: "12"
+
+      # upload to aliyun
+      - uses: yizhoumo/setup-ossutil@v1
+        with:
+          endpoint: ${{ env.OSS_ENDPOINT }}
+          access-key-id: ${{ secrets.GLOBAL_OSS_ACCESS_KEY_ID }}
+          access-key-secret: ${{ secrets.GLOBAL_OSS_ACCESS_KEY_SECRET }}
+      - run: ossutil cp -r -u -f ./ ${{ secrets.OSS_URL_PROD }} -e ${{ env.OSS_ENDPOINT }}
+      - run: ossutil set-meta ${{ secrets.OSS_URL_PROD }}/index.html Cache-Control:no-cache --update -e ${{ env.OSS_ENDPOINT }}
