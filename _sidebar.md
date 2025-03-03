@@ -1,4 +1,4 @@
-- [首页](/)
+- [首页](READEME.md)
 - [快速开始](quickstart.md)
 - [第一章](111.md)
 - [第二章](chapter2.md)
