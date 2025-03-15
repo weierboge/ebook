@@ -7,13 +7,59 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <style>
+    /* 自定义样式，使字体更大更醒目 */
+    .markdown-section {
+      font-size: 16px; /* 增大基础字体大小 */
+      line-height: 1.6; /* 增加行高提高可读性 */
+    }
+    .markdown-section h1 {
+      font-size: 1.5rem; /* 增大一级标题 */
+      font-weight: normal;
+    }
+    .markdown-section h2 {
+      font-size: 1.5rem; /* 增大二级标题 */
+      font-weight: normal;
+      border-bottom: 1px solid #eaecef;
+      padding-bottom: 0.3rem;
+    }
+    .markdown-section h3 {
+      font-size: 1rem; /* 增大三级标题 */
+      font-weight: normal;
+    }
+    .markdown-section p {
+      font-size: 1rem; /* 增大正文字体 */
+    }
+    .markdown-section strong {
+      font-weight: 700;
+    }
+    .sidebar ul li a {
+      font-size: 1rem; /* 增大侧边栏字体 */
+      font-weight: 500;
+      padding-left: 15px; /* 添加左侧内边距 */
+    }
+    .sidebar ul li.active > a {
+      font-weight: 700;
+    }
+    /* 为侧边栏的所有列表项添加左侧内边距 */
+    .sidebar ul {
+      padding-left: 10px;
+    }
+    .app-name-link {
+      font-size: 1rem; /* 增大应用名称字体 */
+      font-weight: 700;
+    }
+    .navbar a {
+      font-size: 1rem; /* 增大导航栏字体 */
+    }
+  </style>
 </head>
 <body>
   <div id="app"></div>
   <script>
     window.$docsify = {
       name: '我的电子书',
-      repo: 'https://github.com/weierboge/ebook',
+      repo: '',
       basePath: 'docs/',
       loadSidebar: true,
       loadNavbar: true,
