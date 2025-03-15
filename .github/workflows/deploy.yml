@@ -18,11 +18,21 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          
+      # 构建步骤 - 如果需要构建，可以在这里添加
+      # - name: Setup Node.js
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: '16'
+      # - name: Install dependencies
+      #   run: npm ci
+      # - name: Build
+      #   run: npm run build
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
           branch: gh-pages
-          folder: .
+          folder: docs
           clean: true
           token: ${{ secrets.GITHUB_TOKEN }}
