@@ -9,87 +9,109 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   <style>
-    /* 自定义样式，使字体更大更醒目 */
-    .markdown-section {
-      font-size: 16px;
-      line-height: 1.6;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 15px;
+    /* 整体页面布局 */
+    body {
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 侧边栏样式 */
+   .sidebar {
+      width: 200px;
+      min-width: 200px;
+      padding: 20px 10px;
+      box-sizing: border-box;
+      border-right: 1px solid #eaecef;
+    }
+
+   .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+   .sidebar ul li a {
+      display: block;
+      padding: 8px 15px;
+      text-decoration: none;
+      color: #333;
+      font-size: 0.9rem;
+    }
+
+   .sidebar ul li.active > a {
+      font-weight: bold;
+      color: #007aff;
+    }
+
+    /* 内容区样式 */
+   .markdown-section {
+      flex: 1;
+      padding: 20px 30px;
+      max-width: calc(100% - 200px);
     }
 
    .markdown-section h1 {
       font-size: 1.5rem;
-      font-weight: normal;
+      font-weight: 600;
+      margin-bottom: 0.5em;
     }
 
    .markdown-section h2 {
-      font-size: 1.5rem;
-      font-weight: normal;
+      font-size: 1.3rem;
+      font-weight: 600;
       border-bottom: 1px solid #eaecef;
-      padding-bottom: 0.3rem;
+      padding-bottom: 0.3em;
+      margin-bottom: 0.5em;
     }
 
    .markdown-section h3 {
-      font-size: 1rem;
-      font-weight: normal;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.3em;
     }
 
    .markdown-section p {
       font-size: 1rem;
-    }
-
-   .markdown-section strong {
-      font-weight: 700;
-    }
-
-   .sidebar ul li a {
-      font-size: 1rem;
-      font-weight: 500;
-      padding-left: 15px;
-    }
-
-   .sidebar ul li.active>a {
-      font-weight: 700;
-    }
-
-   .sidebar ul {
-      padding-left: 10px;
-    }
-
-   .app-name-link {
-      font-size: 1rem;
-      font-weight: 700;
-    }
-
-   .navbar a {
-      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1em;
     }
 
     /* 移动端适配 */
     @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+     .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #eaecef;
+      }
+
      .markdown-section {
-        padding: 0 10px;
+        max-width: 100%;
+        padding: 20px;
       }
     }
 
     /* 版权声明样式 */
    .copyright {
       text-align: center;
-      padding: 20px 0;
-      font-size: 0.9rem;
+      padding: 15px 0;
+      font-size: 0.8rem;
       color: #666;
-    }
-
-    /* 为页面底部添加留白 */
-    body {
-      padding-bottom: 40px;
+      border-top: 1px solid #eaecef;
+      margin-top: 20px;
     }
   </style>
 </head>
 
 <body>
-  <div id="app"></div>
+  <div class="sidebar">
+    <!-- 侧边栏内容可通过 Docsify 动态加载 -->
+  </div>
+  <div id="app" class="markdown-section"></div>
   <div class="copyright">
     &copy; <a href="https://example.com" target="_blank">2025 我的电子书版权所有</a>
   </div>
