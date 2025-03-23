@@ -81,10 +81,40 @@
       font-size: 0.9rem;
       color: #666;
     }
+    /* 响应式布局优化 */
+    @media (max-width: 1440px) {
+     .markdown-section {
+        max-width: 80vw;
+      }
+    }
+
+    @media (max-width: 1200px) {
+     .markdown-section {
+        max-width: 85vw;
+      }
+    }
+
+    @media (max-width: 992px) {
+     .markdown-section {
+        max-width: 90vw;
+        margin-left: 150px;
+      }
+    }
+
+    @media (max-width: 768px) {
+     .sidebar {
+        display: none;
+      }
+     .markdown-section {
+        max-width: 100%;
+        margin-left: 0;
+        padding: 0 10px;
+      }
+    }
 
     /* 为页面底部添加留白 */
     body {
-      padding-bottom: 40px;
+      padding-bottom: 60px;
     }
   </style>
 </head>
