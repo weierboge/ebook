@@ -10,12 +10,21 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   <style>
     /* 自定义样式，使字体更大更醒目 */
-    .markdown-section {
+    html {
       font-size: 16px;
+    }
+
+    body {
+      margin: 0;
+      padding-bottom: 20px;
+    }
+
+   .markdown-section {
       line-height: 1.6;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 15px;
+      padding: 0 1rem;
+      margin-left: 220px;
+      padding-bottom: 10px; /* 减少内容区域底部的内边距 */
+      margin-bottom: 10px; /* 减少内容区域底部的外边距 */
     }
 
    .markdown-section h1 {
@@ -66,21 +75,20 @@
       font-size: 1rem;
     }
 
-    /* 移动端适配 */
-    @media (max-width: 768px) {
-     .markdown-section {
-        margin-left: 0;
-        padding: 0 10px;
-      }
-    }
-
     /* 版权声明样式 */
    .copyright {
       text-align: center;
-      padding: 20px 0;
+      padding: 1rem 0;
       font-size: 0.9rem;
       color: #666;
+      margin-top: 10px; /* 减少版权声明的上边距 */
     }
+
+    /* 分页导航样式 */
+   .pagination {
+      margin-top: 20px; /* 调整分页导航的上边距 */
+    }
+
     /* 响应式布局优化 */
     @media (max-width: 1440px) {
      .markdown-section {
@@ -110,11 +118,6 @@
         margin-left: 0;
         padding: 0 10px;
       }
-    }
-
-    /* 为页面底部添加留白 */
-    body {
-      padding-bottom: 60px;
     }
   </style>
 </head>
